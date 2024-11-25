@@ -1,0 +1,8 @@
+{
+  "name": "campusHub",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "77d2459f"
+}
