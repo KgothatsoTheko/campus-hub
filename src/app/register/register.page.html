@@ -1,0 +1,54 @@
+<ion-toolbar>
+  <ion-row class="ion-align-items-center ion-justify-content-center">
+    <img src="../../assets/images/logo-removebg-preview.png" alt="logo-removebg-preview" class="white-bg">
+  </ion-row>
+</ion-toolbar>
+<ion-content>
+  <div class="padding-10px border-box full-height pop back white">
+    <ion-col>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <h3 class="font-size-35px text-center">Vasity college Student?</h3>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <p>Register and be apart of the community</p>
+      </ion-row>
+    </ion-col><br>
+    <form [formGroup]="registerForm">
+      <ion-col>
+        <ion-input formControlName="fullName" class="custom" required type="text" label-placement="stacked" fill="outline" placeholder="Joe Doe">
+          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        </ion-input>
+        <ion-note *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched" color="danger">
+          Full name is <strong>required.</strong>
+        </ion-note><br>
+        <ion-input formControlName="email" class="custom" required type="email" label-placement="stacked" fill="outline" placeholder="ST10012345@vcconnect.edu.za">
+          <ion-icon slot="start" name="mail"></ion-icon>
+        </ion-input>
+        <ion-note *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" color="danger">
+          Please enter your valid vc student email address.
+        </ion-note><br>
+        <ion-input formControlName="course" class="custom" required type="text" label-placement="stacked" fill="outline" placeholder="BCAD">
+          <ion-icon slot="start" name="book-outline"></ion-icon>
+        </ion-input>
+        <ion-note *ngIf="registerForm.get('course')?.invalid && registerForm.get('course')?.touched" color="danger">
+          Course code is <strong>required.</strong>
+        </ion-note><br>
+        <ion-input formControlName="cellNumber" class="custom" oninput="this.value = this.value.replace(/[^\d]/g, '')" required type="text" label-placement="stacked" fill="outline" placeholder="0827768998">
+          <ion-icon slot="start" name="call-outline"></ion-icon>
+        </ion-input>
+        <ion-note *ngIf="registerForm.get('cellNumber')?.invalid && registerForm.get('cellNumber')?.touched" color="danger">
+          Cell Number is <strong>required.</strong>
+        </ion-note><br>
+        <ion-input formControlName="password" class="custom" required type="password" label-placement="stacked" fill="outline" placeholder="Create Password">
+          <ion-icon slot="start" name="lock-closed"></ion-icon>
+        </ion-input>
+        <ion-note *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" color="danger">
+          Password must be at least 8 characters, include letters, numbers, and a special character(?; !;).
+        </ion-note><br>
+        </ion-col>
+    </form>
+    <ion-button expand="block" fill="solid" shape="round" (click)="register()">Register</ion-button>
+    <p class="ion-text-center white">Already have an account?</p>
+    <p class="ion-text-center pointer underline green" [routerLink]="['/login']">Login</p>
+  </div>
+</ion-content>

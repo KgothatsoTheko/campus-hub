@@ -1,0 +1,43 @@
+ion-input.custom {
+    --background: #fff;
+    --color: black;
+    --placeholder-color: black;
+    --border-radius: 15px;
+    --highlight-color: black;
+  }
+
+  .cons {
+    height: 550px;
+  }
+
+  ion-button {
+    --background: #bad730;
+    --background-activated: #000;
+    --color: black;
+  }
+
+  ion-button:active {
+    --background: #000;
+    --color: #fff;
+  }
+  ion-button:focus {
+    --background: #000;
+    --color: #fff;
+  }
+
+  .back {
+    background-image: url('../../assets/images/back.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: auto;
+  }
+  ion-content {
+    --background: none; /* Keep background transparent for the ion-content */
+    height: 100vh; /* Ensure the full viewport height is maintained */
+  }
+
+  ion-row, ion-col {
+    padding: 0;
+    margin: 0;
+  }

@@ -1,20 +1,61 @@
-<ion-tabs>
+<ion-menu side="end" contentId="main-content" class="pop">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title class="ion-text-center">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-item button id="hover-trigger">
+      <ion-icon aria-hidden="true" name="settings" slot="start"></ion-icon>
+      <ion-label>Settings</ion-label>
+    </ion-item>
+    <ion-item button id="hover-trigger">
+      <ion-icon aria-hidden="true" name="help" slot="start"></ion-icon>
+      <ion-label>Support</ion-label>
+    </ion-item>
+    <ion-item button id="hover-trigger">
+      <ion-icon aria-hidden="true" name="log-out-outline" slot="start"></ion-icon>
+      <ion-label>Sign Out</ion-label>
+    </ion-item>
+  </ion-content>
+</ion-menu>
+<ion-header [translucent]="true" class="padding-10px border-box">
+  <ion-toolbar>
+    <div class="flex center-space-between" id="main-content">
+      <img src="../../assets/images/logo-removebg-preview.png" width="30%" alt="logo-removebg-preview" class="white-bg">
+    <h3 class="ion-text-center"><strong>CampusHUB</strong></h3>
+    <ion-menu-toggle>
+      <ion-button fill="clear">
+        <ion-icon class="magenta" slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-menu-toggle>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-tabs>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1" href="/tabs/tab1">
-      <ion-icon aria-hidden="true" name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
-    </ion-tab-button>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="tab1" href="/tabs/tab1">
+        <ion-icon aria-hidden="true" name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="tab2" href="/tabs/tab2">
+        <ion-icon aria-hidden="true" name="apps"></ion-icon>
+        <ion-label>Categories</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="tab3" href="/tabs/tab3">
+        <ion-icon aria-hidden="true" name="calendar-number"></ion-icon>
+        <ion-label>Events</ion-label>
+      </ion-tab-button>
 
-    <ion-tab-button tab="tab2" href="/tabs/tab2">
-      <ion-icon aria-hidden="true" name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="tab3" href="/tabs/tab3">
-      <ion-icon aria-hidden="true" name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-
-</ion-tabs>
+      <ion-tab-button tab="tab4" href="/tabs/tab4">
+        <ion-icon aria-hidden="true" name="person-circle"></ion-icon>
+        <ion-label>Profile</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  
+  </ion-tabs>
+</ion-content>
