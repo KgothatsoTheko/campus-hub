@@ -33,6 +33,10 @@ const routes: Routes = [
         loadChildren: () => import('./tab1/tab1.module').then(m => m.Tab1PageModule)
       },
       {
+        path: 'event-details/:id',
+        loadChildren: () => import('./event-details/event-details.module').then(m => m.EventDetailsPageModule),
+      },
+      {
         path: 'tab2',
         loadChildren: () => import('./tab2/tab2.module').then(m => m.Tab2PageModule)
       },
@@ -44,8 +48,10 @@ const routes: Routes = [
         path: 'tab4',
         loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
       }
+      
     ]
   },
+
 
 
 ];

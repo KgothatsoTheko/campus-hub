@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuController, ToastController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +10,23 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private storage: Storage, private router: Router, private toastController: ToastController, private menuController: MenuController) {}
 
+  async signOut() {
+    // Clear storage
+    await this.storage.clear();
+  
+    // Show a toast
+    const toast = await this.toastController.create({
+      message: 'Come back soon',
+      duration: 1500,
+      position: 'bottom',
+    });
+    toast.present();
+  
+    // Navigate to the login page
+    this.router.navigate(['/login']);
+  }
 }
+
+

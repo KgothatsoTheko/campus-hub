@@ -1,4 +1,10 @@
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+    pullingIcon="chevron-down-circle-outline"
+    pullingText="Pull to refresh"
+    refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
   <div class="pop padding-10px border-box">
     <div class="flex gap-1em center-center fixed index-1 width-95p">
       <ion-searchbar placeholder="Sports, Wellness, Events, etc." class="custom"></ion-searchbar>
@@ -28,107 +34,20 @@
       </div>
     </div><br>
     <div class="flex wrap full-width">
-      <div class="flex column half-width">
-        <img src="../../assets/images/Cuppa_Tea_October_2024.jpg">
-        <h3>Cuppa Tea</h3>
+      <div class="flex column half-width" *ngFor="let item of allData">
+        <img src="https://vc-app-v1.vercel.app/api/get-file/{{item.file.id}}">
+        <h3>{{item.eventName}}</h3>
         <div class="item-center flex end padding-left-10px">
-          <ion-icon name="star" class="gold"></ion-icon>
-          <p>10</p>
+          <ion-icon name="person" class="gold"></ion-icon>
+          <p>2</p>
         </div>
         <p class="no-margin"><small class="font-size-80p no-margin">
-          It is important for you to touch base with your Campus Head, Avadhi Ghela.
-          Each month only one student per year of study across all our qualifications can book to have a chat with 
-          Avadhi over a Cuppa Tea. Join us for the first Cuppa Tea of the year 2024.
+          {{item.eventDescription}}
           </small>
         </p>
-        <div class="flex blue item-center">
+        <div class="flex blue item-center" [routerLink]="['/dashboard/event-details', item._id]">
           <p>Read More</p>
           <ion-icon name="arrow-forward-outline"></ion-icon>
-        </div>
-      </div>
-      <div class="flex gap-1em wrap half-width">
-        <div class="flex column gap-1em">
-          <img src="../../assets/images/Save_the_Date_VCWFL_VCPTA.jpg">
-          <h3>Euphoria Year End Party</h3>
-          <div class="item-center flex end padding-left-10px">
-            <ion-icon name="star" class="gold"></ion-icon>
-            <p>40</p>
-          </div>
-          <p class="no-margin"><small class="font-size-80p no-margin">
-            As the year draws to a close, we are excited to invite you to the merged Year-End Party for VC Waterfall and VC Pretoria, taking place at DRAMA Hatfield.
-            Join us for an evening filled with magic and wonder, where you can unwind and celebrate your hard work throughout the year. 
-            We assure you that it will be a memorable night, with an exceptional lineup of DJs.
-            </small>
-          </p>
-          <div class="flex blue item-center">
-            <p>Read More</p>
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-        </div>
-      </div>
-      <div class="flex gap-1em wrap half-width">
-        <div class="flex column gap-1em">
-          <img src="../../assets/images/Euphoria_YearEndParty_VCWFL_VCPTA.jpg">
-          <h3>Euphoria Year End Party</h3>
-          <div class="item-center flex end padding-left-10px">
-            <ion-icon name="star" class="gold"></ion-icon>
-            <p>7</p>
-          </div>
-          <p class="no-margin"><small class="font-size-80p no-margin">
-            As the year draws to a close, we are excited to invite you to the merged Year-End Party for VC Waterfall and VC Pretoria, 
-            taking place at DRAMA Hatfield.Join us for an evening filled with magic and wonder, where you can unwind and celebrate your hard work throughout the year.
-            We assure you that it will be a memorable night, with an exceptional lineup of DJs.
-            </small>
-          </p>
-          <div class="flex blue item-center">
-            <p>Read More</p>
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-        </div>
-      </div>
-      <div class="flex gap-1em wrap half-width">
-        <div class="flex column gap-1em">
-          <img src="../../assets/images/Pizza_Movie_Night.jpg">
-          <h3>Pizza Movie Night</h3>
-          <div class="item-center flex end padding-left-10px">
-            <ion-icon name="star" class="gold"></ion-icon>
-            <p>5</p>
-          </div>
-          <p class="no-margin"><small class="font-size-80p no-margin">
-            Join us for tonight's Pizza & Movie Night. 🎬
-
-            WHERE: VC Waterfall Campus
-            WHEN: Friday 31 May 2024
-            TIME: 17:30 for 18:00
-
-            Bring your friends (they don't have to be from VC 😁), a blanket/pillow, 
-            and a card for extra snacks.
-            </small>
-          </p>
-          <div class="flex blue item-center">
-            <p>Read More</p>
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-        </div>
-      </div>
-      <div class="flex gap-1em wrap half-width">
-        <div class="flex column gap-1em">
-          <img src="../../assets/images/2024 Poster.png">
-          <h3>Euphoria Year End Party</h3>
-          <div class="item-center flex end padding-left-10px">
-            <ion-icon name="star" class="gold"></ion-icon>
-            <p>20</p>
-          </div>
-          <p class="no-margin"><small class="font-size-80p no-margin">
-            As the year draws to a close, we are excited to invite you to the merged Year-End Party for VC Waterfall and VC Pretoria, 
-            taking place at DRAMA Hatfield.Join us for an evening filled with magic and wonder, where you can unwind and celebrate your hard work throughout the year.
-            We assure you that it will be a memorable night, with an exceptional lineup of DJs.
-            </small>
-          </p>
-          <div class="flex blue item-center">
-            <p>Read More</p>
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
         </div>
       </div>
     </div>

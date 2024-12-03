@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="example-content pop">
+    <div class="padding-10px border-box xx-large" (click)="goBack()">
+    <ion-icon size="large" name="arrow-back-circle-outline"></ion-icon>
+    <div class="flex-1"></div>
+    </div>
+    <h3>Event Details</h3>
+  </div>
+  <ion-card class="pop" *ngIf="event">
+    <div class="flex ion-align-items-center ion-justify-content-center">
+      <img src="https://vc-app-v1.vercel.app/api/get-file/{{event?.file?.id}}" alt="Event Image" width="100%">
+    </div>
+    <ion-card-header>
+      <ion-card-title>{{ event?.eventName }}</ion-card-title>
+      <ion-card-subtitle>{{ event?.eventDescription }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Category:</strong> {{ event?.category }}</p>
+      <p><strong>When:</strong> {{ event?.date.slice(0,10) }}</p>
+      <p><strong>Time:</strong> {{ event?.time }}</p>
+      <p><strong>Location:</strong> {{ event?.location }}</p>
+    </ion-card-content>
+    <div class="flex gap-1em">
+      <ion-button fill="clear" color="danger" (click)="goBack()">Not interested</ion-button>
+      <ion-button fill="clear" [id]="'present-alert-' + event">RSVP Event</ion-button>
+    </div>
+  
+      <!-- Alert for this specific mentor -->
+      <ion-alert
+        [trigger]="'present-alert-' + event"
+        [header]="'Are you sure you want to RSVP ' + event.eventName"
+        [message]='"Event At: " + event.date.slice(0,10) + " " + event.time '
+        [buttons]="createAlertButtons(event)"
+      ></ion-alert>
+  </ion-card>
+</ion-content>

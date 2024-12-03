@@ -12,10 +12,10 @@
     </ion-col><br>
     <form [formGroup]="loginForm">
       <ion-col>
-        <ion-input formControlName="email" class="custom" required type="email" label-placement="stacked" fill="outline" placeholder="ST10012345@vcconnect.edu.za">
+        <ion-input formControlName="studentEmail" class="custom" required type="email" label-placement="stacked" fill="outline" placeholder="ST10012345@vcconnect.edu.za">
           <ion-icon slot="start" name="mail"></ion-icon>
         </ion-input>
-        <ion-note *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" color="danger">
+        <ion-note *ngIf="loginForm.get('studentEmail')?.invalid && loginForm.get('email')?.touched" color="danger">
           Please enter your valid student email address.
         </ion-note><br><br>
         <ion-input formControlName="password" class="custom" required type="password" label-placement="stacked" fill="outline" placeholder="********">

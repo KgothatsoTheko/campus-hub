@@ -1,17 +1,17 @@
 <ion-content>
   <div class="pop padding-10px border-box">
-    <div class="flex center-space-between">
+    <div class="flex center-space-between" (click)="selectCategory('')">
       <h3>Categories</h3>
       <h3>Show All</h3>
     </div>
     <div class="flex wrap full-width">
-      <ion-card class="width-27p">
+      <ion-card class="width-27p" *ngFor="let item of categories" (click)="selectCategory(item.name)">
         <div class="text-center">
-          <ion-icon name="football"></ion-icon>
+          <ion-icon name="{{item.icon}}"></ion-icon>
         </div>
-        <ion-card-title class="text-center">Sports</ion-card-title>
+        <ion-card-title class="text-center">{{item.name}}</ion-card-title>
       </ion-card>
-      <ion-card class="width-27p">
+      <!-- <ion-card class="width-27p">
         <div class="text-center">
           <ion-icon name="cafe"></ion-icon>
         </div>
@@ -40,10 +40,28 @@
           <ion-icon name="school"></ion-icon>
         </div>
         <ion-card-title class="text-center">Acedemics</ion-card-title>
-      </ion-card>
+      </ion-card> -->
     </div> 
+    <h3 class="text-center">Category: {{ selectedCategory || 'All Events' }}</h3>
+    <div class="flex gap-1em wrap full-width">
+      <ion-card
+        class="flex column half-width"
+        *ngFor="let item of filterData">
+        <div class="full-width">
+          <img src="https://vc-app-v1.vercel.app/api/get-file/{{item.file.id}}" width="100%" alt="image" />
+        </div>
+        <div class="full-width">
+          <h3>{{ item.eventName }}</h3>
+          <p>{{ item.eventDescription }}</p>
+        </div>
+        <div class="flex center-center row gap-05em">
+            <ion-icon name="person"></ion-icon>
+            <p>2</p>
+        </div>
+      </ion-card>
+    </div>
     <div>
-      <h3>Meriden Hour Events</h3>
+      <h3>Meridian Hour Events</h3>
     </div>
   </div>
 </ion-content>

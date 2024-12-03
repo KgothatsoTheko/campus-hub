@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  nodeApiUrl: 'https://vc-app-v1.vercel.app/api/'
 };
+

@@ -21,23 +21,23 @@
         <ion-note *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched" color="danger">
           Full name is <strong>required.</strong>
         </ion-note><br>
-        <ion-input formControlName="email" class="custom" required type="email" label-placement="stacked" fill="outline" placeholder="ST10012345@vcconnect.edu.za">
+        <ion-input formControlName="studentEmail" class="custom" required type="email" label-placement="stacked" fill="outline" placeholder="ST10012345@vcconnect.edu.za">
           <ion-icon slot="start" name="mail"></ion-icon>
         </ion-input>
-        <ion-note *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" color="danger">
+        <ion-note *ngIf="registerForm.get('studentEmail')?.invalid && registerForm.get('email')?.touched" color="danger">
           Please enter your valid vc student email address.
         </ion-note><br>
-        <ion-input formControlName="course" class="custom" required type="text" label-placement="stacked" fill="outline" placeholder="BCAD">
+        <ion-input formControlName="courseCode" class="custom" required type="text" label-placement="stacked" fill="outline" placeholder="BCAD">
           <ion-icon slot="start" name="book-outline"></ion-icon>
         </ion-input>
-        <ion-note *ngIf="registerForm.get('course')?.invalid && registerForm.get('course')?.touched" color="danger">
+        <ion-note *ngIf="registerForm.get('courseCode')?.invalid && registerForm.get('course')?.touched" color="danger">
           Course code is <strong>required.</strong>
         </ion-note><br>
-        <ion-input formControlName="cellNumber" class="custom" oninput="this.value = this.value.replace(/[^\d]/g, '')" required type="text" label-placement="stacked" fill="outline" placeholder="0827768998">
+        <ion-input formControlName="phone" class="custom" oninput="this.value = this.value.replace(/[^\d]/g, '')" required type="text" label-placement="stacked" fill="outline" placeholder="0827768998">
           <ion-icon slot="start" name="call-outline"></ion-icon>
         </ion-input>
-        <ion-note *ngIf="registerForm.get('cellNumber')?.invalid && registerForm.get('cellNumber')?.touched" color="danger">
-          Cell Number is <strong>required.</strong>
+        <ion-note *ngIf="registerForm.get('phone')?.invalid && registerForm.get('cellNumber')?.touched" color="danger">
+          Phone Number is <strong>required.</strong>
         </ion-note><br>
         <ion-input formControlName="password" class="custom" required type="password" label-placement="stacked" fill="outline" placeholder="Create Password">
           <ion-icon slot="start" name="lock-closed"></ion-icon>
