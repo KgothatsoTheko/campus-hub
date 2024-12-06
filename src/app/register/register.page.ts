@@ -35,7 +35,6 @@ export class RegisterPage {
       this.presentToast('Please fill in all fields correctly.', 'bottom');
       return;
     }
-    console.log(this.registerForm.value);
     const registerForm = this.registerForm.value
     this.api.genericPost('register', registerForm).subscribe(
       (response:any)=> {
@@ -46,6 +45,8 @@ export class RegisterPage {
         
        // Navigate to confirmation page
        this.router.navigate(['/login']);
+
+       this.registerForm.reset()
      },
      (error:any) => {
       console.log(`Error: ${error.error}`);

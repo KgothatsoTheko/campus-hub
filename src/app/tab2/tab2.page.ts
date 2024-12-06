@@ -46,7 +46,6 @@ export class Tab2Page {
         this.presentToast(`Error: ${error.error}`, 'bottom');
       }
     );
-
   }
 
   selectCategory(category: string | null) {
@@ -54,6 +53,14 @@ export class Tab2Page {
     this.filterData = category
       ? this.allData.filter((event: any) => event.category === category)
       : this.allData; // Show all events if no category is selected
+  }
+
+  handleRefresh(event:any) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      this.loadEvents()
+      event.target.complete();
+    }, 2000);
   }
 
 }

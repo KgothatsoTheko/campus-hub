@@ -34,8 +34,6 @@ export class EventDetailsPage implements OnInit {
     await this.storage.create();
     // Retrieve user data from Ionic Storage
     this.currentUser = await this.storage.get('currentUser');
-
-    console.log("User", this.currentUser);
     
   }
 

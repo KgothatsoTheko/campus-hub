@@ -53,12 +53,13 @@ export class LoginPage implements OnInit {
 
        // Call the toast function with the response message and position
        this.presentToast('Login successful!', 'bottom');
+       
+       this.loginForm.reset()
         
        // Navigate to confirmation page
        this.router.navigate(['/dashboard/tab1']);
      },
      (error:any) => {
-      console.log(`Error: ${error.error}`);
        // Show an error toast if registration fails
        this.presentToast(`Login failed. ${error.error}.`, 'bottom');
      }

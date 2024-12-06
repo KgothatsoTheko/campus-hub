@@ -6,19 +6,19 @@
       </div>
       <ion-list [inset]="true">
         <ion-item>
-          <ion-input label="First Name" readonly="true" value="Kgothatso"></ion-input>
+          <ion-input label="First Name" readonly="true" [value]="currentUser?.data.fullName?.split(' ')[0]"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Last Name" readonly="true" value="Theko"></ion-input>
+          <ion-input label="Last Name" readonly="true" [value]="currentUser?.data.fullName?.split(' ')[1]"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Student Number" readonly="true" value="ST10092141@vcconnect.edu.za"></ion-input>
+          <ion-input label="Student Number" readonly="true" [value]="currentUser?.data.studentEmail"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Course" readonly="true" value="BCAD"></ion-input>
+          <ion-input label="Course" readonly="true" [value]="currentUser?.data.courseCode"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Phone" readonly="true" value="0837772013"></ion-input>
+          <ion-input label="Phone" readonly="true" [value]="currentUser?.data.phone"></ion-input>
         </ion-item>
       </ion-list>
     </div>

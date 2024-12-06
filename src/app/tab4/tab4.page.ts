@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tab4',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
-  constructor() { }
+  currentUser:any
 
-  ngOnInit() {
+  constructor(private storage: Storage) { }
+
+  async ngOnInit() {
+    // Initialize Ionic Storage
+    await this.storage.create();
+    // Retrieve user data from Ionic Storage
+    this.currentUser = await this.storage.get('currentUser');
+    
   }
 
 }

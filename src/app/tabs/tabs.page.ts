@@ -13,6 +13,10 @@ export class TabsPage {
   constructor(private storage: Storage, private router: Router, private toastController: ToastController, private menuController: MenuController) {}
 
   async signOut() {
+
+      // Initialize Ionic Storage
+      await this.storage.create();
+
     // Clear storage
     await this.storage.clear();
   

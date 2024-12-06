@@ -1,4 +1,10 @@
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+    pullingIcon="chevron-down-circle-outline"
+    pullingText="Pull to refresh"
+    refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
   <div class="pop padding-10px border-box">
     <div class="flex center-space-between" (click)="selectCategory('')">
       <h3>Categories</h3>
@@ -11,49 +17,19 @@
         </div>
         <ion-card-title class="text-center">{{item.name}}</ion-card-title>
       </ion-card>
-      <!-- <ion-card class="width-27p">
-        <div class="text-center">
-          <ion-icon name="cafe"></ion-icon>
-        </div>
-        <ion-card-title class="text-center">Wellness</ion-card-title>
-      </ion-card>
-      <ion-card class="width-27p">
-        <div class="text-center">
-          <ion-icon name="business"></ion-icon>
-        </div>
-        <ion-card-title class="text-center">Career Centre</ion-card-title>
-      </ion-card>
-      <ion-card class="width-27p">
-        <div class="text-center">
-          <ion-icon name="chatbubbles"></ion-icon>
-        </div>
-        <ion-card-title class="text-center">Social</ion-card-title>
-      </ion-card>
-      <ion-card class="width-27p">
-        <div class="text-center">
-          <ion-icon name="heart-circle"></ion-icon>
-        </div>
-        <ion-card-title class="text-center">VC Cares</ion-card-title>
-      </ion-card>
-      <ion-card class="width-27p">
-        <div class="text-center">
-          <ion-icon name="school"></ion-icon>
-        </div>
-        <ion-card-title class="text-center">Acedemics</ion-card-title>
-      </ion-card> -->
     </div> 
     <h3 class="text-center">Category: {{ selectedCategory || 'All Events' }}</h3>
     <div class="flex gap-1em wrap full-width">
       <ion-card
-        class="flex column half-width"
-        *ngFor="let item of filterData">
+        class="flex column"
+        *ngFor="let item of filterData" [routerLink]="['/dashboard/event-details', item._id]">
         <div class="full-width">
           <img src="https://vc-app-v1.vercel.app/api/get-file/{{item.file.id}}" width="100%" alt="image" />
         </div>
-        <div class="full-width">
-          <h3>{{ item.eventName }}</h3>
-          <p>{{ item.eventDescription }}</p>
-        </div>
+        <ion-card-header>
+          <ion-card-title>{{ item.eventName }}</ion-card-title>
+          <ion-card-subtitle>{{ item.eventDescription }}</ion-card-subtitle>
+        </ion-card-header>
         <div class="flex center-center row gap-05em">
             <ion-icon name="person"></ion-icon>
             <p>2</p>

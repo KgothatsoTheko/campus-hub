@@ -10,6 +10,8 @@ import { ToastController } from '@ionic/angular';
 export class Tab1Page {
 
   allData:any
+  filterData:any[] = []
+  searchQuery:string = ''
 
   constructor(private api: ApiService, private toastController: ToastController) {
     this.loadEvents()
@@ -20,7 +22,7 @@ export class Tab1Page {
       (response:any)=> {
         const data = response
         this.allData = data
-        console.log(data);
+        this.filterData = data
       },
       (error:any)=> {
         this.presentToast('Data could not be fetched', 'bottom')
@@ -43,6 +45,14 @@ export class Tab1Page {
       this.loadEvents()
       event.target.complete();
     }, 2000);
+  }
+
+  filterEvents() {
+    const query = this.searchQuery.toLowerCase();
+    this.filterData = this.allData.filter((event:any) => 
+      event.eventName.toLowerCase().includes(query) || 
+      event.category?.toLowerCase().includes(query)
+    );
   }
 
 }

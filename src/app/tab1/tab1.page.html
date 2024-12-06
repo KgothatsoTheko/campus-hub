@@ -7,7 +7,12 @@
   </ion-refresher>
   <div class="pop padding-10px border-box">
     <div class="flex gap-1em center-center fixed index-1 width-95p">
-      <ion-searchbar placeholder="Sports, Wellness, Events, etc." class="custom"></ion-searchbar>
+      <ion-searchbar 
+        [(ngModel)]="searchQuery" 
+        placeholder="Sports, Wellness, Events, etc." 
+        class="custom" 
+        (ionInput)="filterEvents()">
+      </ion-searchbar>
     </div>
     <ion-card class="margin-top-70px">
       <div class="flex">
@@ -34,10 +39,10 @@
       </div>
     </div><br>
     <div class="flex wrap full-width">
-      <div class="flex column half-width" *ngFor="let item of allData">
+      <div class="flex column half-width" *ngFor="let item of filterData">
         <img src="https://vc-app-v1.vercel.app/api/get-file/{{item.file.id}}">
         <h3>{{item.eventName}}</h3>
-        <div class="item-center flex end padding-left-10px">
+        <div class="item-center flex gap-05em end padding-left-10px">
           <ion-icon name="person" class="gold"></ion-icon>
           <p>2</p>
         </div>
