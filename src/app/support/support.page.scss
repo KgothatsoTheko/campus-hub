@@ -1,0 +1,44 @@
+.example-content {
+    display: flex;
+    align-items: center;
+    gap: 3em;
+  }
+  
+  .top-5px {
+    top: 5px;
+  }
+
+  .xx-large {
+    font-size: xxx-large;
+  }
+
+  .larger {
+    font-size: larger;
+  }
+
+  ion-button {
+    --background: #0d6efd;
+    --background-activated: #fff;
+    --color: white;
+  }
+
+  ion-button:active {
+    --background: #000;
+    --color: #fff;
+  }
+  ion-button:focus {
+    --background: #000;
+    --color: #fff;
+  }
+
+  ion-textarea {
+    --highlight-color-focused: #0d6efd;
+  }
+
+  ion-radio {
+  --color-checked: #0d6efd;
+  }
+
+  .pop {
+    font-family: 'Poppins', 'Ariel';
+  }

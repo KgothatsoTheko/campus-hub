@@ -47,13 +47,21 @@ const routes: Routes = [
       {
         path: 'tab4',
         loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
-      }
-      
+      },
+      {
+        path: 'support',
+        loadChildren: () => import('./support/support.module').then( m => m.SupportPageModule)
+      },
+      {
+        path: 'my-rsvp',
+        loadChildren: () => import('./my-rsvp/my-rsvp.module').then( m => m.MyRsvpPageModule)
+      },
+      {
+        path: 'virtual-student',
+        loadChildren: () => import('./virtual-student/virtual-student.module').then( m => m.VirtualStudentPageModule)
+      },
     ]
   },
-
-
-
 ];
 @NgModule({
   imports: [

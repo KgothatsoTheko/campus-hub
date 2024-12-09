@@ -1,0 +1,21 @@
+<ion-content>
+  <div class="padding-10px border-box pop">
+    <div class="example-content">
+      <div class="xx-large padding-10px border-box" (click)="goBack()">
+      <ion-icon size="large" class="xx-large" name="arrow-back-circle-outline"></ion-icon>
+      </div>
+      <h3>Virtual Student Card:</h3>
+    </div>
+    <div class="card-container" [ngClass]="{ 'rotate': isRotating }" (click)="toggleRotation()">
+      <div class="card front">
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Student" width="70px" height="70px" class="round" />
+        <h4>{{ currentUser?.data.fullName }}</h4>
+        <p>Student Number: {{ currentUser?.data.studentEmail.split('@')[0] }}</p>
+      </div>
+      <div class="card back">
+        <h4>Course Code: {{ currentUser?.data.courseCode }}</h4>
+        <p>Campus: Waterfall</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -31,6 +31,16 @@ export class TabsPage {
     // Navigate to the login page
     this.router.navigate(['/login']);
   }
+
+  goToSupport(){
+    this.router.navigate(['/dashboard/support']);
+      this.menuController.close()
+  }
+
+  goToRSVP(){
+    this.router.navigate(['/dashboard/my-rsvp']);
+      this.menuController.close()
+  }
 }
 
 

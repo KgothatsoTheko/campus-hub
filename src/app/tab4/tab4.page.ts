@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -10,7 +11,7 @@ export class Tab4Page implements OnInit {
 
   currentUser:any
 
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private router: Router) { }
 
   async ngOnInit() {
     // Initialize Ionic Storage
@@ -18,6 +19,10 @@ export class Tab4Page implements OnInit {
     // Retrieve user data from Ionic Storage
     this.currentUser = await this.storage.get('currentUser');
     
+  }
+
+  viewID(){
+    this.router.navigate(['/dashboard/virtual-student']);
   }
 
 }

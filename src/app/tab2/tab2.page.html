@@ -24,7 +24,7 @@
         class="flex column"
         *ngFor="let item of filterData" [routerLink]="['/dashboard/event-details', item._id]">
         <div class="full-width">
-          <img src="https://vc-app-v1.vercel.app/api/get-file/{{item.file.id}}" width="100%" alt="image" />
+          <img src="https://vc-app-v1.vercel.app/api1/get-file/{{item.file.id}}" width="100%" alt="image" />
         </div>
         <ion-card-header>
           <ion-card-title>{{ item.eventName }}</ion-card-title>
@@ -32,7 +32,7 @@
         </ion-card-header>
         <div class="flex center-center row gap-05em">
             <ion-icon name="person"></ion-icon>
-            <p>2</p>
+            <p>{{ item.attendanceCount || 0 }}</p>
         </div>
       </ion-card>
     </div>

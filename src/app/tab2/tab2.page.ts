@@ -40,6 +40,17 @@ export class Tab2Page {
     this.api.genericGet('get-events').subscribe(
       (response: any) => {
         this.allData = response;
+        this.allData.forEach((event:any) => {
+          this.api.genericGet(`get-attendance/${event._id}`).subscribe(
+            (attendanceResponse: any) => {
+              event.attendanceCount = attendanceResponse.count || attendanceResponse.length || 0;
+            },
+            (error: any) => {
+              console.error(`Error fetching attendance for event ${event._id}`, error);
+              event.attendanceCount = 0;
+            }
+          );
+        });
         this.filterData = this.allData; // Initialize filtered data
       },
       (error: any) => {

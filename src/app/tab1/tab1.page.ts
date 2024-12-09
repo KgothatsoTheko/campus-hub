@@ -22,6 +22,17 @@ export class Tab1Page {
       (response:any)=> {
         const data = response
         this.allData = data
+        this.allData.forEach((event:any) => {
+          this.api.genericGet(`get-attendance/${event._id}`).subscribe(
+            (attendanceResponse: any) => {
+              event.attendanceCount = attendanceResponse.count || attendanceResponse.length || 0;
+            },
+            (error: any) => {
+              console.error(`Error fetching attendance for event ${event._id}`, error);
+              event.attendanceCount = 0;
+            }
+          );
+        });
         this.filterData = data
       },
       (error:any)=> {

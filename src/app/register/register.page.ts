@@ -35,8 +35,11 @@ export class RegisterPage {
       this.presentToast('Please fill in all fields correctly.', 'bottom');
       return;
     }
-    const registerForm = this.registerForm.value
-    this.api.genericPost('register', registerForm).subscribe(
+    const newRegister = {
+      ...this.registerForm.value,
+      studentEmail: this.registerForm.value.studentEmail?.toLocaleLowerCase()
+    }
+    this.api.genericPost('register', newRegister).subscribe(
       (response:any)=> {
         console.log(`response: ${response}`);
         

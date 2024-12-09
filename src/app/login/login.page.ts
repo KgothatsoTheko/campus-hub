@@ -43,9 +43,11 @@ export class LoginPage implements OnInit {
       this.presentToast('Please fill in all fields correctly.', 'bottom');
       return;
     }
-    console.log(this.loginForm.value);
-    const loginForm = this.loginForm.value
-    this.api.genericPost('login', loginForm).subscribe(
+    const newLogin = {
+      ...this.loginForm.value,
+      studentEmail: this.loginForm.value.studentEmail?.toLocaleLowerCase()
+    }
+    this.api.genericPost('login', newLogin).subscribe(
       async (response:any) => {
         // Ensure storage is initialized before setting data
         // await this.storage.set('accessToken', response.token);
