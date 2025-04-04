@@ -16,10 +16,14 @@
     font-size: larger;
   }
 
+  .border-radius-10p {
+    border-radius: 10px;
+  }
+
   .card-container {
     position: relative;
     width: 300px;
-    height: 200px;
+    height: 230px;
     perspective: 1000px;
     cursor: pointer;
     margin: 20px auto;

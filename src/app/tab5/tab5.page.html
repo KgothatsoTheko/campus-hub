@@ -38,6 +38,22 @@
       <div class="flex center-center">
         <h3>My Course</h3>
       </div>
+
+      <ion-accordion-group>
+        <ion-accordion class="full-width" *ngFor="let item of courseAnnoncements">
+          <ion-item slot="header" color="light">
+            <ion-label>{{item.subject}}</ion-label>
+          </ion-item>
+          <p><strong>Course: </strong>{{item.course}}</p>
+          <p><strong>Year: </strong>{{item.year}}</p>
+          <div class="ion-padding flex column" slot="content">
+            <p><strong>Course: </strong>{{item.course}}</p>
+          <p><strong>Year: </strong>{{item.year}}</p>
+            {{item.message}}
+          </div>
+        </ion-accordion>
+        </ion-accordion-group>
+      
       
     </div>
   </div>

@@ -10,10 +10,10 @@ import { Storage } from '@ionic/storage';
 })
 export class FcmService {
   currentUser:any
+  myCourse!:string
   private backendUrl = 'https://vc-app-v1.vercel.app/api1'; // Replace with your backend URL
 
   constructor(private router: Router, private storage: Storage, private http: HttpClient) { 
-    this.getCurrentUser()
   }
 
   async getCurrentUser() {
@@ -21,11 +21,16 @@ export class FcmService {
     await this.storage.create();
     // Retrieve user data from Ionic Storage
     this.currentUser = await this.storage.get('currentUser');
+
+    this.myCourse = this.currentUser?.data?.courseCode
+
+    console.log(this.myCourse)
     
   }
 
-  initPush() {
+  async initPush() {
     if (Capacitor.isNativePlatform()) {
+      await this.getCurrentUser();
       this.registerPush();
     }else {
       console.warn('Push notifications are only supported on native platforms.');
@@ -46,6 +51,12 @@ export class FcmService {
       console.log('My token: ' + JSON.stringify(token));
       // this.saveTokenToBackend(token.value); // Save token for later use
       this.subscribeToTopic(token.value, 'events');
+      this.subscribeToTopic(token.value, 'general-announcements');
+      if (this.myCourse) {
+        this.subscribeToTopic(token.value, this.myCourse.split(" ").join("-"));
+      } else {
+        console.warn('Course code is not available yet. Skipping subscription.');
+      }
     });
 
     PushNotifications.addListener('registrationError', (error: any) => {

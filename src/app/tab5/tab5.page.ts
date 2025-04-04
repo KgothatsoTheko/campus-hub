@@ -48,9 +48,9 @@ export class Tab5Page  implements OnInit {
       this.generalAnnoncements = this.allData.filter((announcement: any) => !announcement.course);
 
       // Filter course-specific announcements for the current user
-      // this.courseAnnoncements = this.allData.filter(
-      //   (announcement: any) => announcement.course === this.currentUser?.data?.courseCode
-      // );
+      this.courseAnnoncements = this.allData.filter(
+        (announcement: any) => announcement.course === this.currentUser?.data?.courseCode
+      );
 
       console.log("General Announcements:", this.generalAnnoncements);
       console.log("Course Announcements:", this.courseAnnoncements);
