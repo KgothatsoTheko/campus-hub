@@ -49,8 +49,16 @@ const routes: Routes = [
         loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
       },
       {
+        path: 'tab5',
+        loadChildren: () => import('./tab5/tab5.module').then( m => m.Tab5PageModule)
+      },
+      {
         path: 'support',
         loadChildren: () => import('./support/support.module').then( m => m.SupportPageModule)
+      },
+      {
+        path: 'channels',
+        loadChildren: () => import('./channel/channel.module').then( m => m.ChannelPageModule)
       },
       {
         path: 'my-rsvp',

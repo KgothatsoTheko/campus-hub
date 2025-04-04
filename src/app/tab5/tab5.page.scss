@@ -1,7 +1,3 @@
-.width-27p {
-    width: 27%;
-}
-
 .ion-content-scroll-host::before,
 .ion-content-scroll-host::after {
   position: absolute;
@@ -18,14 +14,4 @@
 
 .ion-content-scroll-host::after {
   top: -1px;
-}
-
-ion-chip {
-  flex-shrink: 0; /* Prevent chips from shrinking */
-  max-width: fit-content;
-  white-space: nowrap;
-}
-
-.ofx-auto {
-  overflow-x: auto !important;
 }

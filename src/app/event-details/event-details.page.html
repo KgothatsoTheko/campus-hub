@@ -23,14 +23,20 @@
     <div class="flex gap-1em">
       <ion-button fill="clear" color="danger" (click)="goBack()">Not interested</ion-button>
       <ion-button fill="clear" [id]="'present-alert-' + event">RSVP Event</ion-button>
+      <ion-button fill="clear" color="warning" *ngIf="event.date.slice(0,10) === currentDate" id="click-trigger">Rate Event</ion-button>
     </div>
   
-      <!-- Alert for this specific mentor -->
       <ion-alert
         [trigger]="'present-alert-' + event"
         [header]="'Are you sure you want to RSVP ' + event.eventName"
         [message]='"Event At: " + event.date.slice(0,10) + " " + event.time '
         [buttons]="createAlertButtons(event)"
       ></ion-alert>
+
+      <ion-popover trigger="click-trigger" triggerAction="click">
+        <ng-template>
+          <ion-content class="ion-padding border-box">Coming Soon</ion-content>
+        </ng-template>
+      </ion-popover>
   </ion-card>
 </ion-content>

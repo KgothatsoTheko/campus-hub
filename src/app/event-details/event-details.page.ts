@@ -14,6 +14,8 @@ export class EventDetailsPage implements OnInit {
 
   event: any;
   currentUser!:any
+  currentDate = new Date().toISOString().slice(0,10)
+  rating = 0;
 
   constructor(private route: ActivatedRoute, private storage: Storage, private api: ApiService, private location: Location,  private toastController: ToastController) {}
 
@@ -65,6 +67,31 @@ export class EventDetailsPage implements OnInit {
         },
       },
     ];
+  }
+
+  setRating(star: number) {
+    this.rating = star;
+  }
+
+  submitRating() {
+    const ratingData = {
+      userId: this.currentUser.data._id,
+      eventId: this.event._id,
+      rating: this.rating,
+      date: new Date().toISOString(),
+    };
+
+    console.log("rate:", ratingData)
+
+    // this.api.genericPost('event-rating', ratingData).subscribe(
+    //   (response: any) => {
+    //     this.presentToast('Rating submitted successfully!', 'bottom');
+    //     this.isRatingModalOpen = false;
+    //   },
+    //   (error: any) => {
+    //     this.presentToast(`Rating failed: ${error.error}`, 'bottom');
+    //   }
+    // );
   }
 
   // book a mentor

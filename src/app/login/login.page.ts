@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -12,7 +12,7 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router, private api: ApiService, private toastController: ToastController, private storage: Storage) { }
+  constructor(private router: Router, private loadingController: LoadingController, private api: ApiService, private toastController: ToastController, private storage: Storage) { }
 
   loginForm = new FormGroup({
     studentEmail: new FormControl('', Validators.required),
@@ -28,6 +28,16 @@ export class LoginPage implements OnInit {
     await this.storage.create();
   }
 
+  async presentLoading(message: string) {
+    const loading = await this.loadingController.create({
+      message: message,
+      spinner: 'crescent',
+      duration: 5000, // Optional: auto-dismiss after 5 seconds
+    });
+    await loading.present();
+    return loading;
+  }
+
   async presentToast(message: string, position: 'bottom') {
     const toast = await this.toastController.create({
       message: message,
@@ -38,34 +48,34 @@ export class LoginPage implements OnInit {
   }
 
 
-  login() {
+  async login() {
     if (this.loginForm.invalid) {
       this.presentToast('Please fill in all fields correctly.', 'bottom');
       return;
     }
+  
     const newLogin = {
       ...this.loginForm.value,
       studentEmail: this.loginForm.value.studentEmail?.toLocaleLowerCase()
-    }
+    };
+  
+    const loading = await this.presentLoading('Logging in...');
+  
     this.api.genericPost('login', newLogin).subscribe(
-      async (response:any) => {
-        // Ensure storage is initialized before setting data
-        // await this.storage.set('accessToken', response.token);
+      async (response: any) => {
+        await loading.dismiss();
+  
         await this.storage.set('currentUser', response);
-
-       // Call the toast function with the response message and position
-       this.presentToast('Login successful!', 'bottom');
-       
-       this.loginForm.reset()
-        
-       // Navigate to confirmation page
-       this.router.navigate(['/dashboard/tab1']);
-     },
-     (error:any) => {
-       // Show an error toast if registration fails
-       this.presentToast(`Login failed. ${error.error}.`, 'bottom');
-     }
-    )
+        this.presentToast('Login successful!', 'bottom');
+        this.loginForm.reset();
+        this.router.navigate(['/dashboard/tab1']);
+      },
+      async (error: any) => {
+        await loading.dismiss();
+        this.presentToast(`Login failed. ${error.error}`, 'bottom');
+      }
+    );
   }
+  
 
 }

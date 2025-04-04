@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { register } from 'swiper/element/bundle';
+import { FcmService } from './services/fcm.service';
 
 register();
 
@@ -9,5 +11,17 @@ register();
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(
+    private platform: Platform,
+    private fcmService: FcmService
+  ) {
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // Trigger the push setup
+      this.fcmService.initPush();
+    });
+  }
 }

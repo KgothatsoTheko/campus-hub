@@ -1,13 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>my-rsvp</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">my-rsvp</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+    pullingIcon="chevron-down-circle-outline"
+    pullingText="Pull to refresh"
+    refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
+  <div class="padding-10px border-box pop ion-content-scroll-host">
+    <div class="example-content">
+      <div class=" xx-large" (click)="goBack()">
+      <ion-icon size="large" name="arrow-back-circle-outline"></ion-icon>
+      </div>
+      <h3>Your RSVP</h3>
+    </div>
+    <div *ngFor="let item of bookedEvent">
+      <ion-item>
+        <div class="flex gap-1em">
+        <img alt="event" src="https://vc-app-v1.vercel.app/api1/get-file/{{item.file.id}}" width="33%" />
+        <ion-label class="ion-text-wrap">
+          <h1> {{item.eventName}}</h1>
+          <!-- Match attendance data for this user -->
+          <div *ngFor="let booking of attendance">
+            <ng-container *ngIf="item._id === booking.eventId">
+              <p class="font-size-20px"><strong>Date:</strong> {{booking.date.slice(0, 10)}}</p>
+              <p class="font-size-20px"><strong>Time:</strong> {{booking.time}}</p>
+              <p class="font-size-20px"><strong>Status:</strong> {{booking.status}}</p>
+              <!-- <p class="font-size-20px"><strong>Where:</strong> {{booking.where}}</p> -->
+            </ng-container>
+          </div>
+        </ion-label>
+        </div>
+      </ion-item>
+    </div>
+    
+  </div>
 </ion-content>

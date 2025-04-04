@@ -1,6 +1,6 @@
 <ion-toolbar>
   <ion-row class="ion-align-items-center ion-justify-content-center">
-    <img src="../../assets/images/logo-removebg-preview.png" alt="logo-removebg-preview" class="white-bg">
+    <img src="../../assets/images/new-logo-removebg-preview.png" alt="logo-removebg-preview" class="white-bg">
   </ion-row>
 </ion-toolbar>
 <ion-content>
@@ -27,13 +27,16 @@
         <ion-note *ngIf="registerForm.get('studentEmail')?.invalid && registerForm.get('email')?.touched" color="danger">
           Please enter your valid vc student email address.
         </ion-note><br>
-        <ion-input formControlName="courseCode" class="custom" required type="text" label-placement="stacked" fill="outline" placeholder="BCAD">
-          <ion-icon slot="start" name="book-outline"></ion-icon>
-        </ion-input>
+        <ion-select
+        class="black" required formControlName="courseCode"
+        label-placement="stacked" fill="solid" placeholder="IIE Bachelor of Arts">
+          <ion-icon slot="start" name="book-outline"></ion-icon> 
+        <ion-select-option *ngFor="let item of courses" [value]="item">{{ item }}</ion-select-option>
+      </ion-select>
         <ion-note *ngIf="registerForm.get('courseCode')?.invalid && registerForm.get('course')?.touched" color="danger">
-          Course code is <strong>required.</strong>
+          Course Name is <strong>required.</strong>
         </ion-note><br>
-        <ion-input formControlName="phone" class="custom" oninput="this.value = this.value.replace(/[^\d]/g, '')" required type="text" label-placement="stacked" fill="outline" placeholder="0827768998">
+        <ion-input formControlName="phone" class="custom" oninput="this.value = this.value.replace(/[^\d]/g, '')" required type="text" maxlength="10" label-placement="stacked" fill="outline" placeholder="0827768998">
           <ion-icon slot="start" name="call-outline"></ion-icon>
         </ion-input>
         <ion-note *ngIf="registerForm.get('phone')?.invalid && registerForm.get('cellNumber')?.touched" color="danger">

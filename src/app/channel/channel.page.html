@@ -1,0 +1,19 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+    pullingIcon="chevron-down-circle-outline"
+    pullingText="Pull to refresh"
+    refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
+  <div class="padding-10px border-box pop ion-content-scroll-host">
+    <div class="example-content">
+      <div class=" xx-large" (click)="goBack()">
+      <ion-icon size="large" name="arrow-back-circle-outline"></ion-icon>
+      </div>
+      <h3>Channels</h3>
+    </div>
+
+    
+    
+  </div>
+</ion-content>

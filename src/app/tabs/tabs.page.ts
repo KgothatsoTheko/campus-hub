@@ -37,6 +37,11 @@ export class TabsPage {
       this.menuController.close()
   }
 
+  goToChannel(){
+    this.router.navigate(['/dashboard/channels']);
+      this.menuController.close()
+  }
+
   goToRSVP(){
     this.router.navigate(['/dashboard/my-rsvp']);
       this.menuController.close()

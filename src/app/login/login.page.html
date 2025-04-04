@@ -1,6 +1,6 @@
 <ion-toolbar>
   <ion-row class="ion-align-items-center ion-justify-content-center">
-    <img src="../../assets/images/logo-removebg-preview.png" alt="logo-removebg-preview" class="white-bg">
+    <img src="../../assets/images/new-logo-removebg-preview.png" alt="logo-removebg-preview" class="white-bg">
   </ion-row>
 </ion-toolbar>
 <ion-content [fullscreen]="true">
@@ -26,7 +26,12 @@
         </ion-note>
         </ion-col>
     </form>
-    <p class="ion-text-center pointer b">Forgot Password?</p>
+    <p class="ion-text-center pointer b" id="click-trigger">Forgot Password?</p>
+    <ion-popover trigger="click-trigger" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding border-box">Coming Soon</ion-content>
+      </ng-template>
+    </ion-popover>
     <ion-button expand="block" fill="solid" shape="round" (click)="login()">Login</ion-button>
     <p class="ion-text-center white">Don't have an account?</p>
     <p class="ion-text-center pointer underline green" [routerLink]="['/register']">Create an account</p>

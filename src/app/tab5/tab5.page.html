@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+    pullingIcon="chevron-down-circle-outline"
+    pullingText="Pull to refresh"
+    refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
+  <div class="padding-10px border-box pop ion-content-scroll-host">
+    <div class="flex center-center">
+      <h3>Announcements</h3>
+    </div>
+    <ion-segment (ionChange)="segmentChanged($event)" value="first">
+      <ion-segment-button value="first">
+        <ion-label>General Announcements</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="second">
+        <ion-label>My Course</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  
+    <!-- Content based on selected segment -->
+    <div *ngIf="selectedSegment === 'first'">
+      <div class="flex column center-center">
+        <h3>General Announcements</h3>
+      </div>
+  <ion-accordion-group>
+  <ion-accordion class="full-width" *ngFor="let item of generalAnnoncements">
+    <ion-item slot="header" color="light">
+      <ion-label>{{item.subject}}</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">{{item.message}}</div>
+  </ion-accordion>
+  </ion-accordion-group>
+
+    </div>
+
+    <div *ngIf="selectedSegment === 'second'">
+      <div class="flex center-center">
+        <h3>My Course</h3>
+      </div>
+      
+    </div>
+  </div>
+</ion-content>

@@ -5,9 +5,13 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-item button id="hover-trigger">
-      <ion-icon aria-hidden="true" name="settings" slot="start"></ion-icon>
-      <ion-label>Settings</ion-label>
+    <ion-item button id="hover-trigger" (click)="goToRSVP()">
+      <ion-icon aria-hidden="true" name="checkmark" slot="start"></ion-icon>
+      <ion-label>My RSVP</ion-label>
+    </ion-item>
+    <ion-item button id="hover-trigger" (click)="goToChannel()">
+      <ion-icon aria-hidden="true" name="chatbubbles" slot="start"></ion-icon>
+      <ion-label>Channels</ion-label>
     </ion-item>
     <ion-item button id="hover-trigger" (click)="goToSupport()">
       <ion-icon aria-hidden="true" name="help" slot="start"></ion-icon>
@@ -22,7 +26,7 @@
 <ion-header [translucent]="true" class="padding-10px border-box">
   <ion-toolbar>
     <div class="flex center-space-between" id="main-content">
-      <img src="../../assets/images/logo-removebg-preview.png" width="30%" alt="logo-removebg-preview" class="white-bg">
+      <img src="../../assets/images/new-logo-removebg-preview.png" width="30%" alt="logo-removebg-preview" class="white-bg">
     <h3 class="ion-text-center"><strong>CampusHUB</strong></h3>
     <ion-menu-toggle>
       <ion-button fill="clear">
@@ -39,6 +43,11 @@
       <ion-tab-button tab="tab1" href="/tabs/tab1">
         <ion-icon aria-hidden="true" name="home"></ion-icon>
         <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tab5" href="/tabs/tab5">
+        <ion-icon aria-hidden="true" name="megaphone-outline"></ion-icon>
+        <ion-label>Announcements</ion-label>
       </ion-tab-button>
   
       <ion-tab-button tab="tab2" href="/tabs/tab2">
