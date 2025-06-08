@@ -49,9 +49,3 @@ Developed by **4WM Innovations**, the app bridges the gap between students and a
 - Angular CLI
 - Ionic CLI
 - MongoDB Atlas connection string
-
-### Backend Setup
-```bash
-cd backend
-npm install
-npm run dev
